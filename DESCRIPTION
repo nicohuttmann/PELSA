@@ -1,0 +1,21 @@
+Package: PELSA
+Type: Package
+Title: What the Package Does (Title Case)
+Version: 0.1.0
+Author: Nico Huettmann 
+Description: More about what it does (maybe more than one line).
+    Continuation lines should be indented.
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+URL: https://github.com/nicohuttmann/pOmics3
+BugReports: https://github.com/nicohuttmann/pOmics3/issues
+Suggests: 
+    BiocManager, 
+    limma
+VignetteBuilder: knitr
+Imports:
+    tidyverse, 
+    vroom, 
+    arrow
+RoxygenNote: 7.3.1
