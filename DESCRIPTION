@@ -12,7 +12,8 @@ URL: https://github.com/nicohuttmann/pOmics3
 BugReports: https://github.com/nicohuttmann/pOmics3/issues
 Suggests: 
     BiocManager, 
-    limma
+    limma, 
+    biobroom
 VignetteBuilder: knitr
 Imports:
     tidyverse, 

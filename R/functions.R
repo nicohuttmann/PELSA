@@ -289,6 +289,33 @@ limma_diann_report <- function(data_processed,
   }
   
   
+  # Check packages 
+  
+  ## limma 
+  if (!require(limma)) {
+    if(menu(c("Yes, please install the limma package now.", "No, I will install it myself."), title = ("The limma package is not installed yet, but required for the analysis. Would you like to install it?")) == 1) {
+      if (!require("BiocManager", quietly = TRUE))
+        install.packages("BiocManager")
+      
+      BiocManager::install("limma")
+    } else {
+      return(invisible(FALSE))
+    }
+  }
+  
+  ## biobroom 
+  if (!require(biobroom)) {
+    if(menu(c("Yes, please install the biobroom package now.", "No, I will install it myself."), title = ("The biobroom package is not installed yet, but required for the analysis. Would you like to install it?")) == 1) {
+      if (!require("BiocManager", quietly = TRUE))
+        install.packages("BiocManager")
+      
+      BiocManager::install("biobroom")
+    } else {
+      return(invisible(FALSE))
+    }
+  }
+  
+  
   # Add limma input 
   results_list <- list()
   
@@ -339,6 +366,7 @@ limma_diann_report <- function(data_processed,
                                 fc.threshold = fc.threshold)
   
   # Extract results 
+  require(biobroom)
   results_list[["results"]] <- biobroom::tidy.MArrayLM(results_list[["fit2_eBayes"]]) %>% 
     # rename contrasts 
     dplyr::mutate(term = paste(rev(conditions), collapse = " - ")) %>% 
